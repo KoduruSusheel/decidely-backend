@@ -38,16 +38,6 @@ app.post("/api/decision-frame", async (req, res) => {
           messages: [
             {
               role: "system",
-              content: `You are Decidely — a neutral decision framing assistant.
-
-Your job is NOT to decide for the user.
-Your job is to help the user think clearly.
-
-Return only valid JSON.
-Do NOT include markdown formatting or explanations.`
-            },
-            {
-              role: "user",
               content: `Problem: "${problem}"
 
 TASK:
@@ -58,19 +48,35 @@ TASK:
 
 3. Assign suggested importance weights (1–10).
 
-4. Provide short explanation.
+4. Score each option against every factor from 1–10.
 
-Return JSON in this format:
+5. Provide short explanation for factors.
+
+IMPORTANT RULES:
+
+- Do NOT choose the best option.
+- Do NOT recommend any option.
+- Only structure the decision.
+
+Return JSON STRICTLY in this format:
 
 {
-  "options": [],
+  "options": ["Option A", "Option B"],
   "factors": [
     {
-      "name": "",
-      "suggested_weight": 7,
-      "why_it_matters": ""
+      "name": "Cost",
+      "suggested_weight": 8,
+      "why_it_matters": "Cost affects affordability."
     }
   ],
+  "scores": {
+    "Option A": {
+      "Cost": 7
+    },
+    "Option B": {
+      "Cost": 5
+    }
+  },
   "disclaimer": "Final decisions remain with the user."
 }`
             }
