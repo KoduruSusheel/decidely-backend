@@ -44,7 +44,7 @@ TASK:
 
 1. Identify 3–5 reasonable decision OPTIONS.
 
-2. Identify 5–8 DECISION FACTORS.
+2. Identify 3–4 DECISION FACTORS.
 
 3. Assign suggested importance weights (1–10).
 
